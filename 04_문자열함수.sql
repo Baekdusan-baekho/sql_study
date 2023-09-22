@@ -29,6 +29,7 @@ FROM employees;
 
 SELECT last_name FROM employees
 WHERE LOWER(last_name) = 'austin';
+-- 소문자로 비교할때
 
 
 -- length(길이), instr(문자 찾기, 없으면 0을 반환, 있으면 인덱스 값)
@@ -46,6 +47,7 @@ FROM employees;
 -- 매개값 3개부터는 || 을 사용해야 한다.
 -- 인덱스 1부터 시작.
 -- SUBSTR(문자, 시작인덱스, 갯수(길이))
+-- SUBSTR마지막에 갯수를 넣지 않으면 마지막 길이로 된다 또한 원래 길이를 넘어가는 갯수를 넣어도 마지막에서 멈춘다
 SELECT
     'abcdef' AS ex,
     SUBSTR('abcdef', 1, 4),
@@ -73,7 +75,7 @@ SELECT RTRIM('javascript_java', 'java') FROM dual;
 SELECT TRIM('     java     ') FROM dual;
 -- 공백도 문자열이다 
 
--- replace()
+-- replace(문자열, 바꾸고 싶은 단어, 바꿀 단어)
 SELECT
     REPLACE('My dream is a president', 'president', 'programmer')
 FROM dual;
