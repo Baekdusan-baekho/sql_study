@@ -42,7 +42,8 @@ SELECT
     first_name, LENGTH(first_name), INSTR(first_name, 'a')
 FROM employees;
 
--- substr(¹®ÀÚ¿­ ÀÚ¸£±â), concat(¹®ÀÚ ¿¬°á)
+-- substr(ÀÚ¸¦ ¹®ÀÚ¿­, ½ÃÀÛÀÎµ¦½º, ±æÀÌ)
+-- concat(¹®ÀÚ ¿¬°á)
 -- concatÀº ¸Å°³°ªÀ» 2°³ ¹Û¿¡ ¸ø ¹Ş´Â´Ù
 -- ¸Å°³°ª 3°³ºÎÅÍ´Â || À» »ç¿ëÇØ¾ß ÇÑ´Ù.
 -- ÀÎµ¦½º 1ºÎÅÍ ½ÃÀÛ.
@@ -61,7 +62,7 @@ SELECT
 FROM employees;
 
 -- LPAD, RPAD (ÁÂ, ¿ìÃø ÁöÁ¤¹®ÀÚ·Î Ã¤¿ì±â)
--- (¹®ÀÚ, ±æÀÌ, Ã¤¿ï°´Ã¼)
+-- (ÁöÁ¤¹®ÀÚ, ÀüÃ¼ ¹®ÀÚ¿­ ±æÀÌ, Ã¤¿ï°´Ã¼)
 SELECT
     LPAD('abc', 10, '*'),
     RPAD('abc', 10, '*')
@@ -98,11 +99,9 @@ EMPLOYEES Å×ÀÌºí¿¡¼­ ÀÌ¸§, ÀÔ»çÀÏÀÚ ÄÃ·³À¸·Î º¯°æÇØ¼­ ÀÌ¸§¼øÀ¸·Î ¿À¸§Â÷¼ø Ãâ·Â Ç
 */
 SELECT
     CONCAT(first_name, last_name) AS ÀÌ¸§,
-    REPLACE(hire_date, '/', '') AS ÀÔ»çÀÏÀÚ
-    
-    
-FROM employees;
-
+    REPLACE(hire_date, '/', '') AS ÀÔ»çÀÏÀÚ  
+FROM employees
+ORDER BY ÀÌ¸§ ASC;
 
 /*
 ¹®Á¦ 2.
@@ -112,13 +111,9 @@ EMPLOYEES Å×ÀÌºí¿¡¼­ phone_numberÄÃ·³Àº ###.###.####ÇüÅÂ·Î ÀúÀåµÇ¾î ÀÖ´Ù
 */
 SELECT
     phone_number,
-    CONCAT('(02)', SUBSTR(phone_number, 4)),
-    LENGTH(CONCAT('(02)',SUBSTR(phone_number, 4)))
-
+    CONCAT('(02)', SUBSTR(phone_number, 5)),
+    LENGTH(CONCAT('(02)',SUBSTR(phone_number, 5)))
 FROM employees;
-
-
-
 
 /*
 ¹®Á¦ 3. 
