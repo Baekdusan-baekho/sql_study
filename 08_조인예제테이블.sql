@@ -1,4 +1,3 @@
-
 -- 테이블 생성
 CREATE TABLE info (
     id NUMBER NOT NULL,
@@ -51,4 +50,3 @@ ADD(auth_id NUMBER);
 UPDATE info
 SET auth_id = 3
 WHERE id = 5;
-
