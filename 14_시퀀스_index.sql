@@ -9,7 +9,7 @@ CREATE SEQUENCE dept2_seq
     NOCACHE -- 캐시메모리 사용 여부 (CACHE)
     NOCYCLE; -- 순환 여부 (NOCYCLE이 기본, 순환시키려면 CYCLE)
 
-DROP TABLE dept2;
+DROP TABLE dept2; --- 테이블 삭제
 
 
 CREATE TABLE dept2 (
@@ -39,7 +39,7 @@ ALTER SEQUENCE dept2_seq INCREMENT BY -72;
 SELECT dept2_seq.NEXTVAL FROM dual;
 ALTER SEQUENCE dept2_seq INCREMENT BY 1;
 
-DROP SEQUENCE dept2_seq;
+DROP SEQUENCE dept2_seq; -- 시퀀스 삭제
 
 --------------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE INDEX emp_salary_idx ON employees(salary);
 
 DROP INDEX emp_salary_idx;
 
-
+DROP SEQUENCE board_seq;
 -- 시퀀스와 인덱스를 사용하는 hint 방법
 CREATE SEQUENCE board_seq
     START WITH 1
@@ -74,6 +74,7 @@ CREATE SEQUENCE board_seq
     NOCACHE
     NOCYCLE;
 
+DROP TABLE tbl_board;
 CREATE TABLE tbl_board(
     bno NUMBER(10) PRIMARY KEY,
     writer VARCHAR2(20)

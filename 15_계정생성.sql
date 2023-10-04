@@ -2,7 +2,7 @@
 SELECT * FROM all_users;
 
 CREATE USER user1 IDENTIFIED BY user1;
-SELECT * FROM user;
+
 /*
 DCL: GRANT(권한 부여), REVOKE(권한 회수)
 
@@ -26,6 +26,8 @@ RESOURCE, CONNECT, DBA TO [유저 이름]
 GRANT CREATE SESSION TO user1;
 
 SELECT * FROM hr.departments;
+
+GRANT SELECT ON HELP TO user1;
 
 GRANT SELECT ON hr.departments TO user1; -- user1이라는 계정에 hr계정의 departments 테이블을
                                         -- 조회할수있게 권한을 주는것
