@@ -189,10 +189,10 @@ SELECT * FROM jobs;
 -- IN, OUT 동시에 처리
 CREATE OR REPLACE PROCEDURE my_parameter_test_proc
     (
-    -- IN: 반환 불가. 받는 용도로만 사용
+    -- IN: 반환 불가. 받는 용도로만 활용
     p_var1 IN VARCHAR2,
-    -- OUT: 받는 용도로 활용 불가능.
-    -- OUT이 되는 시점은 프로시저가 끝날 때(END; 엔드블록). 그 전까지는 할당이 안됨.
+    -- OUT: 받는 용도로 활용 불가능. 
+    -- OUT이 되는 시점은 프로시저가 끝날 때. 그 전까지는 할당이 안됨.
     p_var2 OUT VARCHAR2,
     -- IN, OUT이 둘 다 가능함.
     p_var3 IN OUT VARCHAR2
@@ -202,16 +202,14 @@ IS
 BEGIN
     dbms_output.put_line('p_var1: ' || p_var1); -- IN: 당연히 출력됨
     dbms_output.put_line('p_var2: ' || p_var2); -- OUT: 값이 전달되지 않음
-    dbms_output.put_line('p_var3: ' || p_var3); -- IN OUT: IN의 성질을 가지고 있구나!~
+    dbms_output.put_line('p_var3: ' || p_var3); -- IN OUT: IN의 성질을 가지고 있구나~
     
     -- p_var1 := '결과1'; IN 변수는 값 할당 자체가 불가능.
-    p_var2 := '결과2'; 
+    p_var2 := '결과2';
     p_var3 := '결과3';
     
-    dbms_output.put_line('END 전 v_var2: ' || v_var2);
-    
+    dbms_output.put_line('End 전 p_var2: ' || p_var2);
 END;
-
 
 DECLARE
     v_var1 VARCHAR2(10) := 'value1';
@@ -220,11 +218,10 @@ DECLARE
 BEGIN
     my_parameter_test_proc(v_var1, v_var2, v_var3);
     
-    dbms_output.put_line('v_var1: ' || v_var1); -- IN
-    dbms_output.put_line('v_var2: ' || v_var2); -- OUT
-    dbms_output.put_line('v_var3: ' || v_var3); -- IN OUT
+    dbms_output.put_line('v_var1: ' || v_var1);
+    dbms_output.put_line('v_var2: ' || v_var2);
+    dbms_output.put_line('v_var3: ' || v_var3);
 END;
-
 -------------------------------------------
 
 -- RETURN
@@ -303,7 +300,8 @@ BEGIN
 END;
 
 
-
+-- WHEN  조건
+-- THEN 조건에 만족할 때 출력하는 데이터
 
 
 
